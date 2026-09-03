@@ -61,6 +61,7 @@ export function CitizenServices() {
           title="Choose what you need to do"
           subtitle="Tell us what you need help with and we'll guide you to the right service."
           align="center"
+          className="max-w-none"
         />
 
         <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-3">

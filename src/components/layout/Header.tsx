@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, MessageCircle } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -246,6 +246,23 @@ export function Header() {
               );
             })}
           </nav>
+
+          <div className="flex flex-col gap-2 border-t border-border px-4 py-3">
+            <a
+              href="tel:+2348000024842"
+              className="flex items-center gap-2 rounded-sm px-3 py-2 text-small text-text-secondary hover:bg-background hover:text-deep-navy"
+            >
+              <Phone size={14} />
+              Non-emergency: +234-800-002-4842
+            </a>
+            <a
+              href="https://wa.me/2348000024842"
+              className="flex items-center gap-2 rounded-sm px-3 py-2 text-small text-text-secondary hover:bg-background hover:text-deep-navy"
+            >
+              <MessageCircle size={14} />
+              WhatsApp
+            </a>
+          </div>
 
           <div className="flex flex-col gap-3 border-t border-border p-4">
             <Button

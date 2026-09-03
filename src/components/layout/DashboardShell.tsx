@@ -25,7 +25,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { authed, name, signOut } = useMockAuth();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
           type="button"
           onClick={() => setCollapsed((v) => !v)}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="absolute -right-3 top-1/2 z-40 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-sm border border-border bg-white text-text-secondary shadow-card transition-colors hover:text-deep-navy"
+          className="absolute -right-3.5 top-1/2 z-40 flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-sm border border-border bg-white text-text-secondary shadow-card transition-colors hover:text-deep-navy"
         >
           {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
