@@ -43,3 +43,4 @@ next-env.d.ts
 # unused raw reference/inspo images (scratch material, not served by the app)
 /public/images/brand/*
 !/public/images/brand/citizens-gate-mark.png
+!/public/images/brand/citizens-gate-logo.png
