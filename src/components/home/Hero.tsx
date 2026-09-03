@@ -42,7 +42,7 @@ export function Hero() {
         style={{ minHeight: "min(94vh, 980px)" }}
       >
         <div className="mx-auto my-auto max-w-xl pt-4 text-center sm:pt-0">
-          <h1 className="mx-auto max-w-[26rem] text-[2.5rem] leading-snug font-extrabold text-balance text-deep-navy sm:max-w-none sm:font-bold sm:text-display">
+          <h1 className="mx-auto max-w-[19rem] text-[2.5rem] leading-snug font-extrabold text-balance text-deep-navy sm:max-w-none sm:font-bold sm:text-display">
             Welcome to Lagos State Citizens Gate.
           </h1>
           <p className="mx-auto mt-6 max-w-[19rem] text-body-lg text-text-secondary sm:max-w-lg">

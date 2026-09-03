@@ -2,7 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Play, PlayCircle, Film, Smartphone, MessageCircle, Landmark, Building2 } from "lucide-react";
+import {
+  Play,
+  PlayCircle,
+  Film,
+  Smartphone,
+  MessageCircle,
+  Landmark,
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -101,6 +111,10 @@ export function PlatformGuide() {
     container.scrollTo({ left: targetLeft, behavior: "smooth" });
   }, [active]);
 
+  function scrollTabs(direction: 1 | -1) {
+    scrollRef.current?.scrollBy({ left: direction * 160, behavior: "smooth" });
+  }
+
   return (
     <section className="bg-white pt-32 pb-48">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -117,7 +131,28 @@ export function PlatformGuide() {
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div ref={scrollRef} className="w-full overflow-x-auto">
+            <div className="relative w-full">
+              <button
+                type="button"
+                onClick={() => scrollTabs(-1)}
+                aria-label="Scroll options left"
+                className="absolute left-0 top-0 z-10 flex h-8 w-8 -translate-x-1 items-center justify-center rounded-full border border-border bg-white shadow-card sm:hidden"
+              >
+                <ChevronLeft size={16} className="text-deep-navy" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTabs(1)}
+                aria-label="Scroll options right"
+                className="absolute right-0 top-0 z-10 flex h-8 w-8 translate-x-1 items-center justify-center rounded-full border border-border bg-white shadow-card sm:hidden"
+              >
+                <ChevronRight size={16} className="text-deep-navy" />
+              </button>
+
+              <div
+                ref={scrollRef}
+                className="w-full overflow-x-auto px-10 sm:px-0"
+              >
               <div className="relative mx-auto flex w-max items-center justify-center gap-x-8 pb-3">
                 {items.map((item, i) => {
                   const isActive = i === active;
@@ -152,6 +187,7 @@ export function PlatformGuide() {
                     }}
                   />
                 </div>
+              </div>
               </div>
             </div>
 
