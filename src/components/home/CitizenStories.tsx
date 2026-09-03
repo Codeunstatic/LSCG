@@ -74,7 +74,7 @@ export function CitizenStories() {
 
         <Reveal>
           <div
-            className="mt-10 overflow-hidden"
+            className="mt-14 overflow-hidden"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >

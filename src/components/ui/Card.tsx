@@ -14,7 +14,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-lg border border-border/50 bg-surface shadow-card",
+        "rounded-lg border border-border/50 bg-surface",
         className,
       )}
     >
@@ -87,7 +87,7 @@ export function ServiceCard({
       >
         {title}
       </span>
-      <span className="text-small text-text-secondary text-center">{description}</span>
+      <span className="text-[0.9375rem] text-text-secondary text-center">{description}</span>
       {cta && (
         <span className="mt-1 inline-flex items-center gap-1 text-small font-semibold text-lagos-blue">
           {cta}

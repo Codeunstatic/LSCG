@@ -63,7 +63,7 @@ export function CitizenServices() {
           align="center"
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-3">
           <Reveal className="lg:col-span-1">
             <Link
               href="/report"
@@ -110,7 +110,7 @@ export function CitizenServices() {
                   <p className="mt-5 text-body font-semibold text-deep-navy transition-colors group-hover:text-lagos-blue">
                     {service.title}
                   </p>
-                  <p className="mt-2 text-small text-text-secondary">
+                  <p className="mt-2 text-[0.9375rem] text-text-secondary">
                     {service.description}
                   </p>
                   <span className="mt-auto flex items-center gap-1.5 pt-5 text-small font-semibold text-lagos-blue sm:hidden">

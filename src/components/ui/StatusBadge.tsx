@@ -1,24 +1,27 @@
 import { cn } from "@/lib/utils";
 
-export type ComplaintStatus = "received" | "assigned" | "in_review" | "resolved";
+export type ComplaintStatus =
+  | "submitted"
+  | "received"
+  | "in_review"
+  | "in_progress"
+  | "resolved";
 
-const statusConfig: Record<ComplaintStatus, { label: string; className: string }> = {
-  received: {
-    label: "Received",
-    className: "bg-lagos-blue/10 text-lagos-blue",
-  },
-  assigned: {
-    label: "Assigned",
-    className: "bg-lagos-blue/10 text-lagos-blue",
-  },
-  in_review: {
-    label: "In review",
-    className: "bg-warm-yellow/20 text-[#8a6d1a]",
-  },
-  resolved: {
-    label: "Resolved",
-    className: "bg-lagos-green/10 text-lagos-green-dark",
-  },
+/** Canonical citizen-facing stage order, used by every progress display. */
+export const COMPLAINT_STAGES: { id: ComplaintStatus; label: string }[] = [
+  { id: "submitted", label: "Submitted" },
+  { id: "received", label: "Received" },
+  { id: "in_review", label: "In review" },
+  { id: "in_progress", label: "In progress" },
+  { id: "resolved", label: "Resolved" },
+];
+
+export const statusLabels: Record<ComplaintStatus, string> = {
+  submitted: "Submitted",
+  received: "Received",
+  in_review: "In review",
+  in_progress: "In progress",
+  resolved: "Resolved",
 };
 
 export function StatusBadge({
@@ -28,17 +31,18 @@ export function StatusBadge({
   status: ComplaintStatus;
   className?: string;
 }) {
-  const config = statusConfig[status];
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-small font-semibold",
-        config.className,
+        "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-small font-medium",
+        status === "resolved"
+          ? "bg-lagos-green/10 text-lagos-green-dark"
+          : "bg-lagos-blue/10 text-lagos-blue",
         className,
       )}
     >
-      <span className="h-1 w-1 rounded-full bg-current" />
-      {config.label}
+      <span className="h-1.5 w-1.5 rounded-full bg-current" />
+      {statusLabels[status]}
     </span>
   );
 }

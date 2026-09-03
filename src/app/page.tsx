@@ -16,9 +16,9 @@ export default function Home() {
       <AboutSection />
       <CitizenServices />
       <GovernmentServices />
-      <QuickAccess />
-      <WhatYouCanReport />
       <PlatformGuide />
+      <WhatYouCanReport />
+      <QuickAccess />
       <CitizenStories />
       <Leadership />
       <ClosingCta />

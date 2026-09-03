@@ -4,6 +4,7 @@ import { createContext, useContext, useSyncExternalStore, type ReactNode } from 
 
 export type IssueCategory =
   | "roads"
+  | "traffic"
   | "water"
   | "waste"
   | "buildings"
@@ -124,11 +125,12 @@ export function useReport() {
 }
 
 export const categoryLabels: Record<IssueCategory, string> = {
-  roads: "Roads & transportation",
+  roads: "Roads & bridges",
+  traffic: "Traffic & public transport",
   water: "Water & drainage",
   waste: "Waste & environment",
   buildings: "Buildings & housing",
   health: "Public health",
   electricity: "Electricity & utilities",
-  other: "Other",
+  other: "I'm not sure",
 };

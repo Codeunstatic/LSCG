@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
-import { UtilityBar } from "@/components/layout/UtilityBar";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Public_Sans } from "next/font/google";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  display: "swap",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -19,12 +16,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${instrumentSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${publicSans.variable} h-full antialiased font-sans`}>
       <body className="min-h-full flex flex-col font-sans">
-        <UtilityBar />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

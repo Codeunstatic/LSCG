@@ -9,36 +9,36 @@ import { Reveal } from "@/components/ui/Reveal";
 
 const cards = [
   {
-    image: "/images/quick-access/community-champion-card-v3.png",
+    image: "/images/quick-access/community-champion-card-v4.png",
     width: 1671,
     height: 941,
     href: "#",
     alt: "Become a Community Champion. Join active citizens making Lagos cleaner, safer and better for everyone. Get Involved.",
   },
   {
-    image: "/images/quick-access/lastma-card-v4.png",
+    image: "/images/quick-access/lastma-card-v5.png",
     width: 1672,
     height: 941,
     href: "tel:3367",
     alt: "Call LASTMA toll-free on 3367. Get help with traffic incidents and road emergencies anytime, anywhere.",
   },
   {
-    image: "/images/quick-access/consultation-forum-card-v3.png",
-    width: 1669,
+    image: "/images/quick-access/consultation-forum-card-v4.png",
+    width: 1670,
     height: 942,
     href: "#",
     alt: "The Open Consultation Forum. Share ideas, give feedback and help shape a better Lagos. Join the Forum.",
   },
   {
-    image: "/images/quick-access/join-conversation-card.png",
+    image: "/images/quick-access/join-conversation-card-v2.png",
     width: 1672,
     height: 941,
     href: "#",
     alt: "Join the conversation now. Your voice matters. Share ideas, report issues and help build a better Lagos for everyone.",
   },
   {
-    image: "/images/quick-access/social-register-card.png",
-    width: 1672,
+    image: "/images/quick-access/social-register-card-v2.png",
+    width: 1671,
     height: 941,
     href: "#",
     alt: "Lagos State Single Social Register. A fairer, smarter way to identify and support Lagos residents who need help.",
@@ -57,7 +57,7 @@ export function QuickAccess() {
   }
 
   return (
-    <section id="quick-access" className="bg-white py-32">
+    <section id="quick-access" className="bg-white pt-40 pb-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Quick access"
@@ -66,7 +66,7 @@ export function QuickAccess() {
           align="center"
         />
 
-        <div className="relative mt-14">
+        <div className="relative mt-20">
           <button
             type="button"
             onClick={() => scrollByCard(-1)}

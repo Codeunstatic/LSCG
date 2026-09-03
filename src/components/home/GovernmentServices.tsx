@@ -106,7 +106,7 @@ export function GovernmentServices() {
           align="center"
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, i) => (
             <Reveal key={service.title} delay={(i % 4) * 60}>
               <ServiceCard

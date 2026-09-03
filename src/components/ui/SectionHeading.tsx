@@ -16,7 +16,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-2xl",
+        "max-w-[23rem] sm:max-w-2xl",
         align === "center" && "mx-auto text-center",
         className,
       )}
@@ -26,9 +26,13 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className="text-h2 text-balance text-deep-navy">{title}</h2>
+      <h2 className="text-[1.75rem] font-semibold sm:text-h2 text-balance text-deep-navy">
+        {title}
+      </h2>
       {subtitle && (
-        <p className="mt-3 text-body-lg text-text-secondary">{subtitle}</p>
+        <p className="mt-3 text-body sm:text-body-lg text-text-secondary">
+          {subtitle}
+        </p>
       )}
     </div>
   );

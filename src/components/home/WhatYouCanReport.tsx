@@ -61,7 +61,7 @@ export function WhatYouCanReport() {
   return (
     <section
       ref={ref}
-      className="relative mt-20 flex min-h-[620px] w-full items-end overflow-hidden bg-deep-navy text-white"
+      className="relative flex min-h-[620px] w-full items-end overflow-hidden bg-deep-navy text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

@@ -1,7 +1,8 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import type { Complaint } from "./complaints";
+import { buildTimeline, type Complaint } from "./complaints";
+import { COMPLAINT_STAGES } from "@/components/ui/StatusBadge";
 
 type StoredComplaint = {
   complaint: Complaint;
@@ -49,13 +50,34 @@ function getServerSnapshot(): StoredComplaint[] {
  * `email` (case-insensitive) — mirrors real-world "sign in with the same
  * email you complained with" access, without a real backend.
  */
+/**
+ * Complaints saved before the five-stage status model was introduced can be
+ * missing newer fields (or carry a retired status), so fill in sensible
+ * defaults rather than rendering `undefined`.
+ */
+function normalizeComplaint(complaint: Complaint): Complaint {
+  const validStatus = COMPLAINT_STAGES.some((s) => s.id === complaint.status);
+  return {
+    ...complaint,
+    status: validStatus ? complaint.status : "submitted",
+    submittedDate: complaint.submittedDate ?? complaint.lastUpdated ?? "",
+    latestUpdate:
+      complaint.latestUpdate ??
+      "Your complaint has been submitted through Citizens Gate.",
+    timeline:
+      complaint.timeline?.length === COMPLAINT_STAGES.length
+        ? complaint.timeline
+        : buildTimeline([complaint.lastUpdated ?? null, null, null, null, null]),
+  };
+}
+
 export function useMyComplaints(email: string): Complaint[] {
   const stored = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const normalized = email.trim().toLowerCase();
   if (!normalized) return [];
   return stored
-    .filter((entry) => entry.email.trim().toLowerCase() === normalized)
-    .map((entry) => entry.complaint);
+    .filter((entry) => (entry.email ?? "").trim().toLowerCase() === normalized)
+    .map((entry) => normalizeComplaint(entry.complaint));
 }
 
 export function saveMyComplaint(complaint: Complaint, email: string) {

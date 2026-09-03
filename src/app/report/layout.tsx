@@ -5,7 +5,7 @@ export default function ReportLayout({ children }: LayoutProps<"/report">) {
   return (
     <ReportProvider>
       <div className="bg-background min-h-full">
-        <ReportStepper />
+        <ReportStepper basePath="/report" />
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">{children}</div>
       </div>
     </ReportProvider>

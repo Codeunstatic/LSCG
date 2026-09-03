@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Building2, ChevronRight } from "lucide-react";
+import { Building2 } from "lucide-react";
 import { Select } from "@/components/ui/Field";
 import { useReport, type IssueCategory } from "@/components/report/ReportContext";
 
@@ -45,6 +45,7 @@ function findMda(name: string) {
 
 const CATEGORY_ROUTING: Record<IssueCategory, Destination> = {
   roads: { mda: "Ministry of Works and Infrastructure", department: "Road Maintenance" },
+  traffic: { mda: "Ministry of Transportation", department: "Traffic Management" },
   water: {
     mda: "Ministry of Environment & Water Resources",
     department: "Drainage Services",
@@ -81,6 +82,7 @@ export function RoutingDepartment() {
   const { data, update } = useReport();
   const { category, description } = data;
   const hasDescription = description.trim().length > 0;
+  const isUncertain = category === "other" || category === null;
   const intendedDestination = resolveDestination(category);
   const intendedKey = destinationKey(intendedDestination);
 
@@ -158,29 +160,46 @@ export function RoutingDepartment() {
         <div className="mt-3 space-y-2">
           <div className="h-4 w-2/3 animate-pulse rounded-sm bg-border" />
           <p className="text-small text-text-secondary">
-            Determining where to route your report&hellip;
+            Automatically identifying the right department for your
+            issue&hellip;
           </p>
         </div>
       )}
 
       {phase === "resolved" && destination && (
         <div className="mt-2">
-          <div className="flex items-start gap-3">
+          <p className="text-small text-text-secondary">
+            {manualDestination ? (
+              <>You&apos;ve manually selected this department.</>
+            ) : isUncertain ? (
+              <>
+                We couldn&apos;t tell exactly which department this belongs
+                to, so we&apos;ve provisionally assigned it below.
+              </>
+            ) : (
+              <>
+                Based on the category you selected, we&apos;ve automatically
+                assigned this to:
+              </>
+            )}
+          </p>
+
+          <div className="mt-3 flex items-start gap-3 rounded-md border border-border bg-white p-3">
             <Building2 size={18} className="mt-0.5 shrink-0 text-lagos-blue" />
             <div>
               <p className="text-body font-semibold text-deep-navy">
                 {destination.mda}
               </p>
               {destination.department && (
-                <p className="text-small text-text-secondary">
+                <p className="mt-0.5 text-small text-text-secondary">
+                  <span className="font-medium text-text-primary">
+                    Sub-department:
+                  </span>{" "}
                   {destination.department}
                 </p>
               )}
             </div>
           </div>
-          <p className="mt-3 text-small text-text-secondary">
-            Your report will be routed here.
-          </p>
 
           {showSelector ? (
             <div className="mt-3 space-y-3">
@@ -206,14 +225,17 @@ export function RoutingDepartment() {
               )}
             </div>
           ) : (
-            <button
-              type="button"
-              onClick={() => setShowSelector(true)}
-              className="mt-3 inline-flex items-center gap-1 text-small font-semibold text-lagos-blue hover:text-lagos-blue-dark"
-            >
-              Change department
-              <ChevronRight size={14} />
-            </button>
+            <p className="mt-3 text-small text-text-secondary">
+              Not the right department?{" "}
+              <button
+                type="button"
+                onClick={() => setShowSelector(true)}
+                className="font-semibold text-lagos-blue underline-offset-2 hover:text-lagos-blue-dark hover:underline"
+              >
+                Change it
+              </button>
+              .
+            </p>
           )}
         </div>
       )}

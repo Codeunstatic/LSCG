@@ -24,7 +24,7 @@ export function Leadership() {
           title="Serving Lagos State"
           align="center"
         />
-        <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
           {leaders.map((leader, i) => (
             <Reveal key={leader.name} delay={i * 100}>
               <div className="overflow-hidden rounded-lg border border-border/50 bg-background">

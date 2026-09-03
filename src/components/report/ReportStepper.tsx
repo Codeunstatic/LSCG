@@ -4,22 +4,33 @@ import { usePathname } from "next/navigation";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const steps = [
-  { label: "Issue", path: "/report" },
-  { label: "Describe", path: "/report/describe" },
-  { label: "Location", path: "/report/location" },
-  { label: "Review", path: "/report/review" },
-];
-
-export function ReportStepper() {
+export function ReportStepper({
+  basePath,
+  /**
+   * Inner container classes. The dashboard renders this full-bleed inside a
+   * padded <main>, so it overrides the default horizontal padding to keep the
+   * steps aligned with the rest of the column.
+   */
+  contentClassName = "mx-auto max-w-3xl px-4 py-5 sm:px-6",
+}: {
+  basePath: string;
+  contentClassName?: string;
+}) {
   const pathname = usePathname();
-  if (pathname.startsWith("/report/confirmation")) return null;
+  if (pathname.startsWith(`${basePath}/confirmation`)) return null;
+
+  const steps = [
+    { label: "Issue", path: basePath },
+    { label: "Describe", path: `${basePath}/describe` },
+    { label: "Location", path: `${basePath}/location` },
+    { label: "Review", path: `${basePath}/review` },
+  ];
 
   const activeIndex = steps.findIndex((s) => s.path === pathname);
 
   return (
     <div className="border-b border-border bg-white">
-      <div className="mx-auto max-w-3xl px-4 py-5 sm:px-6">
+      <div className={contentClassName}>
         <ol className="flex items-center">
           {steps.map((step, i) => {
             const isComplete = i < activeIndex;

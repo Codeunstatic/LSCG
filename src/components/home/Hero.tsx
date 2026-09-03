@@ -41,20 +41,20 @@ export function Hero() {
         className="relative mx-auto flex max-w-7xl flex-col justify-between px-4 py-20 sm:px-6 lg:px-8"
         style={{ minHeight: "min(94vh, 980px)" }}
       >
-        <div className="mx-auto my-auto max-w-xl text-center">
-          <h1 className="text-display text-balance text-deep-navy">
+        <div className="mx-auto my-auto max-w-xl pt-2 text-center sm:pt-0">
+          <h1 className="mx-auto max-w-[20rem] text-[2.25rem] leading-snug font-extrabold text-balance text-deep-navy sm:max-w-none sm:font-bold sm:text-display">
             Welcome to Lagos State Citizens Gate.
           </h1>
-          <p className="mx-auto mt-6 max-w-lg text-body-lg text-text-secondary">
+          <p className="mx-auto mt-6 max-w-[19rem] text-body-lg text-text-secondary sm:max-w-lg">
             Report issues, send feedback and connect with Lagos State
             Government, and follow every step until it&apos;s resolved.
           </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/report" size="lg">
+          <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+            <Button href="/report" size="lg" className="w-full sm:w-auto">
               Report an issue
               <ArrowRight size={18} />
             </Button>
-            <Button href="/track" variant="secondary" size="lg">
+            <Button href="/track" variant="secondary" size="lg" className="w-full sm:w-auto">
               Track a complaint
               <ArrowRight size={18} />
             </Button>
