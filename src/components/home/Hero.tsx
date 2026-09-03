@@ -35,6 +35,7 @@ export function Hero() {
           sizes="100vw"
           className="scale-105 object-cover object-[75%_35%] saturate-125"
         />
+        <div className="absolute inset-0 bg-white/25" />
       </div>
 
       <div
